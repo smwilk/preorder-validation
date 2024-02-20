@@ -1,0 +1,32 @@
+query RunInput {
+  shop {
+    localTime {
+      date
+    }
+  }
+  cart {
+    buyerIdentity {
+      customer {
+        numberOfOrders
+      }
+    }
+    lines {
+      merchandise {
+        ... on ProductVariant {
+          product {
+            handle
+            metafield (namespace: "preorder", key: "deadline") {
+              type
+              value
+            }
+          }
+        }
+      }
+    }
+    cost {
+      subtotalAmount {
+        amount
+      }
+    }
+  }
+}
